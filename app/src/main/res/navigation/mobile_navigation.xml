@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_profile">
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.digitalme.nav_fragments.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_documents"
+        android:name="com.example.digitalme.nav_fragments.DocumentsFragment"
+        android:label="@string/menu_documents"
+        tools:layout="@layout/fragment_documents" />
+
+    <fragment
+        android:id="@+id/nav_notes"
+        android:name="com.example.digitalme.nav_fragments.NotesFragment"
+        android:label="@string/menu_notes"
+        tools:layout="@layout/fragment_notes" />
+    <fragment
+        android:id="@+id/nav_cards"
+        android:name="com.example.digitalme.nav_fragments.CardsFragment"
+        android:label="@string/menu_cards"
+        tools:layout="@layout/fragment_cards" />
+</navigation>
