@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".nav_fragments.DocumentsFragment">
+    tools:context=".nav_fragments.documents.DocumentsFragment">
 
     <TextView
         android:id="@+id/text_documents"
