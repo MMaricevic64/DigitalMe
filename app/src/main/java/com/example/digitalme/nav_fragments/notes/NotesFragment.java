@@ -13,23 +13,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.digitalme.R;
+import com.example.digitalme.nav_fragments.profile.ProfileViewModel;
 
 public class NotesFragment extends Fragment {
 
     private NotesViewModel notesViewModel;
+    private View rootView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notesViewModel =
-                new ViewModelProvider(this).get(NotesViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_notes, container, false);
-        final TextView textView = root.findViewById(R.id.text_notes);
-        notesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+
+        notesViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getActivity().getApplication())).get(NotesViewModel.class);
+        rootView = inflater.inflate(R.layout.fragment_notes, container, false);
+
+        return rootView;
     }
 }

@@ -16,4 +16,17 @@
     <string name="intro_screen_description">Description</string>
     <string name="btn_get_started_text">Get Started</string>
     <string name="skip_text_view">Skip</string>
+
+    <string name="profile_edit_butt_text">EDIT</string>
+    <string name="profile_save_butt_text">SAVE</string>
+    <string name="profile_qr_icon_desc">Get QR code</string>
+    <string name="profile_image_desc">Profile image</string>
+    <string name="profile_name_input_desc">Name and surname</string>
+    <string name="profile_location_input_desc">City, State</string>
+    <string name="profile_email_input_desc">Email</string>
+    <string name="profile_email_input_placeholder">youremail@domain.com</string>
+    <string name="profile_phone_input_desc">Phone</string>
+    <string name="profile_phone_input_placeholder">Your phone number</string>
+    <string name="profile_company_input_desc">Company</string>
+    <string name="profile_company_input_placeholder">Your company</string>
 </resources>
