@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.digitalme">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -11,8 +12,13 @@
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.DigitalMe">
-        <activity android:name=".open_screen.OpenScreen"
-                  android:theme="@style/Theme.DigitalMe.NoActionBar">
+        <activity android:name=".nav_fragments.notes.AddEditNoteActivity"
+            android:parentActivityName="com.example.digitalme.MainActivity"
+            tools:ignore="ExtraText">
+        </activity>
+        <activity
+            android:name=".open_screen.OpenScreen"
+            android:theme="@style/Theme.DigitalMe.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,12 +27,12 @@
         </activity>
         <activity
             android:name=".intro_screen.IntroActivity"
-            android:theme="@style/Theme.DigitalMe.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.DigitalMe.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.DigitalMe.NoActionBar"></activity>
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.DigitalMe.NoActionBar" />
     </application>
 
 </manifest>

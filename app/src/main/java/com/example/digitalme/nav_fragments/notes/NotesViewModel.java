@@ -11,28 +11,36 @@ import androidx.lifecycle.ViewModel;
 import com.example.digitalme.nav_fragments.profile.Profile;
 import com.example.digitalme.nav_fragments.profile.ProfileRepository;
 
+import java.util.List;
+
 public class NotesViewModel extends AndroidViewModel {
 
     /// TODO: Implement the ViewModel
-    //private NotesRepository repository;
-    //private LiveData<Note> notes;
+    private NoteRepository repository;
+    private LiveData<List<Note>> allNotes;
 
     public NotesViewModel(@NonNull Application application){
         super(application);
-        //repository = new ProfileRepository(application);
-        //notes = repository.getNotes();
+        repository = new NoteRepository(application);
+        allNotes = repository.getAllNotes();
     }
 
-    public void insert(Profile profile){
-        //repository.insert(profile);
+    public void insert(Note note){
+        repository.insert(note);
     }
 
-    public void update(Profile profile){
-        //repository.update(profile);
+    public void update(Note note){
+        repository.update(note);
     }
 
-    public void delete(Profile profile){
-        //repository.delete(profile);
+    public void delete(Note note){
+        repository.delete(note);
+    }
+    public void deleteAllNotes(){
+        repository.deleteAllNotes();
     }
 
+    public LiveData<List<Note>> getAllNotes() {
+        return allNotes;
+    }
 }
