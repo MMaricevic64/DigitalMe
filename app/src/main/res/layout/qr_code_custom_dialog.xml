@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1">
+
+        <ImageButton
+            android:id="@+id/qr_code_close"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/qrcode_dialog_close_btn_desc"
+            app:srcCompat="@drawable/ic_close" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/qr_code_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_weight="0.9"
+        android:contentDescription="@string/qrcode_dialog_image_desc"
+        app:srcCompat="@drawable/qr_code_icon" />
+</LinearLayout>

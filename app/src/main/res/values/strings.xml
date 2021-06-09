@@ -29,4 +29,6 @@
     <string name="profile_phone_input_placeholder">Your phone number</string>
     <string name="profile_company_input_desc">Company</string>
     <string name="profile_company_input_placeholder">Your company</string>
+    <string name="qrcode_dialog_close_btn_desc">Close QR code dialog</string>
+    <string name="qrcode_dialog_image_desc">QR code</string>
 </resources>

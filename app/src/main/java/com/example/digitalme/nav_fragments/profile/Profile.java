@@ -9,9 +9,8 @@ public class Profile {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-
+    @ColumnInfo(name = "Picture")
     private String picture_uri;
-
     @ColumnInfo(name = "Name")
     private String name;
     @ColumnInfo(name = "Location")
