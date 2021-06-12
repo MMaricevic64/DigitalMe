@@ -268,6 +268,9 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
 
                 //Check if all inputs are not empty
+                if(prof_pic == null){
+                    prof_pic = Uri.parse("android.resource://"+getContext().getPackageName()+"/drawable/default_profile_icon");
+                }
                 if(TextUtils.isEmpty(name.getText().toString())){
                     name.setError("Your name field can't be empty!");
                     return;
