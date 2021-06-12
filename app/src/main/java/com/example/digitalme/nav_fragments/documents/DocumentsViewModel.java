@@ -1,21 +1,29 @@
 package com.example.digitalme.nav_fragments.documents;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DocumentsViewModel extends ViewModel {
+import java.util.List;
 
-    // TODO: Implement the ViewModel
-    private MutableLiveData<String> mText;
+public class DocumentsViewModel extends AndroidViewModel {
 
-    public DocumentsViewModel(){
-        mText = new MutableLiveData<>();
-        mText.setValue("This is documents fragment");
+    private DocumentTypeRepository repository;
+    private LiveData<List<DocumentType>> allDocumentTypes;
+
+    public DocumentsViewModel(@NonNull Application application){
+        super(application);
+        repository = new DocumentTypeRepository(application);
+        allDocumentTypes = repository.getAllDocumentTypes();
     }
 
-    public LiveData<String> getText(){
-        return mText;
+    public void insert(DocumentType documentType){
+        repository.insert(documentType);
     }
-
+    public void delete(DocumentType documentType) { repository.delete(documentType); }
+    public LiveData<List<DocumentType>> getAllDocumentTypes() { return allDocumentTypes; }
 }

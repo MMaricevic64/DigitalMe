@@ -20,6 +20,13 @@
             android:parentActivityName="com.example.digitalme.MainActivity"
             tools:ignore="ExtraText">
         </activity>
+        <activity android:name=".nav_fragments.documents.DocumentDisplay"
+            android:parentActivityName="com.example.digitalme.MainActivity"
+            tools:ignore="ExtraText">
+        </activity>
+        <activity android:name=".nav_fragments.documents.DocumentFullScreen"
+            tools:ignore="ExtraText">
+        </activity>
         <activity
             android:name=".open_screen.OpenScreen"
             android:theme="@style/Theme.DigitalMe.NoActionBar">
