@@ -12,16 +12,17 @@ public class CardType {
     @ColumnInfo(name = "Title")
     private String title;
 
+
+    public CardType(String title) {
+        this.title = title;
+    }
+
     public int getId() {
         return id;
     }
 
     public String getTitle() {
         return title;
-    }
-
-    public CardType(String title) {
-        this.title = title;
     }
 
     public void setId(int id) {

@@ -39,13 +39,13 @@ public abstract class DigiMeDatabase extends RoomDatabase {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     DigiMeDatabase.class,"DigiMe_database")
                     .fallbackToDestructiveMigration()
-                    .addCallback(roomCallBack)
+                    //.addCallback(roomCallBack)
                     .build();
         }
         return instance;
     }
 
-    private static RoomDatabase.Callback roomCallBack = new RoomDatabase.Callback(){
+    /*private static RoomDatabase.Callback roomCallBack = new RoomDatabase.Callback(){
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
@@ -67,5 +67,5 @@ public abstract class DigiMeDatabase extends RoomDatabase {
             cardTypeDao.insert(new CardType("e-Vizitke"));
             return null;
         }
-    }
+    }*/
 }

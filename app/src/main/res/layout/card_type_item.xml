@@ -1,86 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="8dp">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:layout_weight="0.33">
+
     <LinearLayout
+        android:id="@+id/card_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
         android:background="#283350"
-        tools:ignore="MissingConstraints"
-            android:layout_marginTop="12dp">
+        tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/text_view_kreditne_kartice"
+            android:id="@+id/text_view_card_type"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/text_view_kreditne_kartice"
-            android:textStyle="bold"
+            android:layout_toStartOf="@id/text_view_card_type"
             android:gravity="center"
+            android:maxLines="1"
+            android:text="Card Type"
+            android:textAlignment="center"
             android:textColor="#ffb500"
             android:textSize="30dp"
-            android:maxLines="1"
-            android:text="Kreditne kartice"
-            android:textAlignment="center"
-            />
+            android:textStyle="bold" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:background="#f93800"
-        tools:ignore="MissingConstraints"
-        android:layout_marginTop="20dp">
-
-
-        <TextView
-            android:id="@+id/text_view_shooping_kartice"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/text_view_shooping_kartice"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textColor="#283350"
-            android:textSize="30dp"
-            android:text="Shooping kartice"
-            android:textAlignment="center"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:background="#ffb500"
-        tools:ignore="MissingConstraints"
-        android:layout_marginTop="20dp">
-
-
-        <TextView
-            android:id="@+id/text_view_vizitke"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/text_view_vizitke"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textColor="#f93800"
-            android:textSize="30dp"
-            android:text="e-Vizitke"
-            android:textAlignment="center"
-            />
-    </LinearLayout>
-</LinearLayout>
-</ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
