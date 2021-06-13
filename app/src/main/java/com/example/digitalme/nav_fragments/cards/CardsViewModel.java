@@ -1,21 +1,25 @@
 package com.example.digitalme.nav_fragments.cards;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class CardsViewModel extends ViewModel {
+import java.util.List;
 
-    // TODO: Implement the ViewModel
-    private MutableLiveData<String> mText;
+public class CardsViewModel extends AndroidViewModel {
+    private CardTypeRepository repository;
+    private LiveData<List<CardType>> allCardTypes;
 
-    public CardsViewModel(){
-        mText = new MutableLiveData<>();
-        mText.setValue("This is cards fragment");
+
+    public CardsViewModel(@NonNull Application application) {
+        super(application);
+        repository = new CardTypeRepository(application);
+        allCardTypes = repository.getAllCardTypes();
     }
-
-    public LiveData<String> getText(){
-        return mText;
+    public void insert(CardType cardType){
+        repository.insert(cardType);
     }
-
+    public LiveData<List<CardType>> getAllCardTypes(){return allCardTypes; }
 }
