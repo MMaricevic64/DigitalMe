@@ -16,6 +16,6 @@ public interface DocumentDao {
     @Delete
     void delete(Document document);
 
-    @Query("SELECT * FROM Document WHERE document_type == :document_type")
+    @Query("SELECT * FROM Document WHERE Document_type == :document_type")
     LiveData<List<Document>> getAllDocuments(int document_type);
 }

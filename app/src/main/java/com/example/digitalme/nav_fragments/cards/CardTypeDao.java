@@ -16,5 +16,4 @@ public interface CardTypeDao {
     @Query("SELECT * FROM CardType")
     LiveData<List<CardType>> getAllCardTypes();
 
-
 }

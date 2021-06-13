@@ -24,6 +24,14 @@
             android:parentActivityName="com.example.digitalme.MainActivity"
             tools:ignore="ExtraText">
         </activity>
+        <activity android:name=".nav_fragments.cards.CardDisplay"
+            android:parentActivityName="com.example.digitalme.MainActivity"
+            tools:ignore="ExtraText">
+        </activity>
+        <activity android:name=".nav_fragments.cards.AddCard"
+            android:parentActivityName="com.example.digitalme.MainActivity"
+            tools:ignore="ExtraText">
+        </activity>
         <activity android:name=".nav_fragments.documents.DocumentFullScreen"
             tools:ignore="ExtraText">
         </activity>

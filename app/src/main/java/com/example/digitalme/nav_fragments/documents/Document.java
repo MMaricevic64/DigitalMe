@@ -48,10 +48,3 @@ public class Document {
         this.document_type = document_type;
     }
 }
-
-/*
-foreignKeys = @ForeignKey(entity = DocumentType.class,
-                                  parentColumns = "id",
-                                  childColumns = "Document_type",
-                                  onDelete = 1)
- */
