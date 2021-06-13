@@ -23,8 +23,8 @@
             android:padding="4dp"
             android:text="Card Type"
             android:textAlignment="textStart"
-            android:textColor="#ffb500"
-            android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:textSize="24dp"
             android:textStyle="bold" />
 
         <TextView
@@ -32,10 +32,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="4dp"
+            android:paddingBottom="4dp"
             android:text="Card number"
             android:textColor="#ffb500"
-            android:textSize="25dp"
+            android:textSize="24dp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -51,7 +51,7 @@
                 android:padding="4dp"
                 android:text="CVV2: "
                 android:textColor="@color/white"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:padding="4dp"
                 android:text="Card ccv"
                 android:textColor="#ffb500"
-                android:textSize="25dp"
+                android:textSize="24dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -70,9 +70,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
                 android:padding="4dp"
-                android:text="Expires: "
+                android:text="EXPIRES: "
                 android:textColor="@color/white"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -83,7 +83,7 @@
                 android:text="Card expire"
                 android:textAlignment="textStart"
                 android:textColor="#ffb500"
-                android:textSize="25dp"
+                android:textSize="24dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -94,17 +94,38 @@
             android:padding="4dp"
             android:text="Card owner"
             android:textColor="#ffb500"
-            android:textSize="25dp"
+            android:textSize="24dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/account_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="2dp"
             android:text="Account number"
             android:textColor="#ffb500"
-            android:textSize="25dp"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/account_number_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ACCOUNT NUMBER"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/iban_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="2dp"
+            android:text="Card IBAN"
+            android:textColor="#ffb500"
+            android:textSize="24dp"
             android:textStyle="bold" />
 
         <TextView
@@ -113,17 +134,7 @@
             android:layout_height="wrap_content"
             android:text="IBAN"
             android:textColor="@color/white"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/iban_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:text="Card IBAN"
-            android:textColor="#ffb500"
-            android:textSize="25dp"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
     </LinearLayout>

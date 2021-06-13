@@ -29,7 +29,7 @@ public class CardDisplay extends AppCompatActivity {
         ID_card_type = intent.getIntExtra("ID_TYPE_CARD",0);
 
         //Initiate viewModel
-        cardViewModel = new ViewModelProvider(this, androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(CardsDisplayViewModel.class);
+        //cardViewModel = new ViewModelProvider(this, androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(CardsDisplayViewModel.class);
 
         //Adding new card
         FloatingActionButton buttonAddDocument = findViewById(R.id.button_add_card);
@@ -46,8 +46,8 @@ public class CardDisplay extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         //Initialize adapter
-        final CardDisplayAdapter adapter = new CardDisplayAdapter();
-        recyclerView.setAdapter(adapter);
+       // final CardDisplayAdapter adapter = new CardDisplayAdapter();
+       // recyclerView.setAdapter(adapter);
 
     }
 }
