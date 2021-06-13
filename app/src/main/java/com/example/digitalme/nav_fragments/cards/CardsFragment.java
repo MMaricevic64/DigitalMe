@@ -65,9 +65,9 @@ public class CardsFragment extends Fragment {
             @Override
             public void onItemClick(CardType cardType) {
                 //Otvori novi intent i posalji ID itema
-                /*Intent intent = new Intent(getActivity(), CardDisplay.class);
+                Intent intent = new Intent(getActivity(), CardDisplay.class);
                 intent.putExtra("ID_TYPE_CARD", cardType.getId());
-                startActivityForResult(intent, DISPLAY_CARDS);*/
+                startActivityForResult(intent, DISPLAY_CARDS);
             }
         });
 

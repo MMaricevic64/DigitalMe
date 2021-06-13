@@ -72,7 +72,7 @@ public class CardTypeAdapter extends ListAdapter<CardType, CardTypeAdapter.CardT
         public CardTypeHolder(View itemView){
             super(itemView);
             textViewCardType = itemView.findViewById(R.id.text_view_card_type);
-            cardLayout = itemView.findViewById(R.id.card_layout);
+            cardLayout = itemView.findViewById(R.id.card_type_layout);
 
             int height = Resources.getSystem().getDisplayMetrics().heightPixels;
             itemView.getLayoutParams().height = (int) (height / 3.7);
