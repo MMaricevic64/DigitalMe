@@ -57,12 +57,14 @@ public class CardDisplay extends AppCompatActivity {
 
         //Create recyclerView
         RecyclerView recyclerView = findViewById(R.id.card_gallery);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-
-        //Initialize adapter
         final CardDisplayAdapter adapter = new CardDisplayAdapter();
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
+        //Initialize adapter
+
+
 
         //Submit list to adapter
         cardDisplayViewModel.getAllCards(ID_card_type).observe(this, new Observer<List<Card>>() {
