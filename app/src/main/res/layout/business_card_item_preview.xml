@@ -69,6 +69,9 @@
             android:paddingTop="4dp"
             android:paddingBottom="2dp"
             android:text="Email"
+            android:autoLink="email"
+            android:clickable="true"
+            android:textColorLink="#f93800"
             android:textColor="#f93800"
             android:textSize="24dp"
             android:textStyle="bold" />
@@ -90,6 +93,9 @@
             android:paddingTop="4dp"
             android:paddingBottom="2dp"
             android:text="Call me"
+            android:autoLink="phone"
+            android:clickable="true"
+            android:textColorLink="#f93800"
             android:textColor="#f93800"
             android:textSize="24dp"
             android:textStyle="bold" />

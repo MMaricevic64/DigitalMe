@@ -66,11 +66,13 @@
             android:id="@+id/business_card_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autoLink="email"
             android:clickable="true"
             android:paddingTop="4dp"
             android:paddingBottom="2dp"
             android:text="Email"
             android:textColor="#f93800"
+            android:textColorLink="#f93800"
             android:textSize="24dp"
             android:textStyle="bold" />
 
@@ -87,12 +89,14 @@
             android:id="@+id/business_card_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autoLink="phone"
             android:clickable="true"
             android:gravity="right"
             android:paddingTop="4dp"
             android:paddingBottom="2dp"
             android:text="Call me"
             android:textColor="#f93800"
+            android:textColorLink="#f93800"
             android:textSize="24dp"
             android:textStyle="bold" />
 

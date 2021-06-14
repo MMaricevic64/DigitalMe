@@ -50,10 +50,10 @@ public class CardsFragment extends Fragment {
                 if(cardTypes.size() == 0){
                     //Add Card types to database
                     CardType creditCardType = new CardType("Kreditne kartice");
-                    CardType shoopingCardType = new CardType("Shooping kartice");
+                    CardType shoppingCardType = new CardType("Shopping kartice");
                     CardType eVisitCardType = new CardType("e-Vizitke");
                     cardsViewModel.insert(creditCardType);
-                    cardsViewModel.insert(shoopingCardType);
+                    cardsViewModel.insert(shoppingCardType);
                     cardsViewModel.insert(eVisitCardType);
                 }
                     adapter.submitList(cardTypes);

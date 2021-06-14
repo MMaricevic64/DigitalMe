@@ -87,6 +87,7 @@ public class DocumentDisplay extends AppCompatActivity {
             @Override
             public void onLongImageClick(Document document) {
                 documentsImageViewModel.delete(document);
+                Toast.makeText(DocumentDisplay.this, "Document deleted", Toast.LENGTH_SHORT).show();
             }
         });
 

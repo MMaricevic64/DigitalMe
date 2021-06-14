@@ -51,7 +51,7 @@ public class CardTypeAdapter extends ListAdapter<CardType, CardTypeAdapter.CardT
             holder.textViewCardType.setTextColor(Color.parseColor("#ffb500"));
             holder.cardLayout.setBackgroundColor(Color.parseColor("#283350"));
         }
-        else if(currentCardType.getTitle().equals("Shooping kartice")){
+        else if(currentCardType.getTitle().equals("Shopping kartice")){
             holder.textViewCardType.setTextColor(Color.parseColor("#283350"));
             holder.cardLayout.setBackgroundColor(Color.parseColor("#f93800"));
         }
