@@ -206,7 +206,7 @@ public class ProfileFragment extends Fragment {
 
     private void showQrCustomDialog(Profile profile) {
 
-        String QrString = profile.getName() + "|" + profile.getLocation() + "|" + profile.getEmail() + "|" + profile.getPhone() + "|" + profile.getCompany();
+        String QrString = profile.getName() + "&" + profile.getLocation() + "&" + profile.getEmail() + "&" + profile.getPhone() + "&" + profile.getCompany();
         //Make QR code bitmap
         QRGEncoder qrgEncoder = new QRGEncoder(QrString,null, QRGContents.Type.TEXT,400);
         Bitmap qrbits = qrgEncoder.getBitmap();

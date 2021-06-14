@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:layout_weight="0.33"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:padding="4dp">
 
     <LinearLayout
-        android:id="@+id/business_card_layout"
+        android:id="@+id/business_add_card_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffb500"
-        android:orientation="vertical"
         android:gravity="center_vertical|center_horizontal"
-        tools:ignore="MissingConstraints">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/business_card_desc"
+            android:id="@+id/business_add_card_desc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:maxLines="1"
@@ -29,10 +30,9 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/business_card_owner"
+            android:id="@+id/business_add_card_owner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:gravity="center"
             android:paddingBottom="4dp"
             android:text="Name and surname"
@@ -42,31 +42,30 @@
 
 
         <TextView
-            android:id="@+id/business_card_location"
+            android:id="@+id/business_add_card_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:gravity="right"
             android:padding="4dp"
             android:text="Location"
             android:textColor="#f93800"
             android:textSize="24dp"
             android:textStyle="bold" />
+
         <TextView
-            android:id="@+id/business_card_location_label"
+            android:id="@+id/business_add_card_location_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LOCATION"
             android:gravity="right"
+            android:text="LOCATION"
             android:textColor="@color/white"
             android:textSize="16dp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/business_card_email"
+            android:id="@+id/business_add_card_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:paddingTop="4dp"
             android:paddingBottom="2dp"
             android:text="Email"
@@ -75,19 +74,18 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/business_card_email_label"
+            android:id="@+id/business_add_card_email_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="EMAIL"
             android:textColor="@color/white"
             android:textSize="16dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/business_card_phone"
+            android:id="@+id/business_add_card_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:gravity="right"
             android:paddingTop="4dp"
             android:paddingBottom="2dp"
@@ -97,7 +95,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/business_card_phone_label"
+            android:id="@+id/business_add_card_phone_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -107,10 +105,9 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/business_card_company"
+            android:id="@+id/business_add_card_company"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:paddingTop="4dp"
             android:paddingBottom="2dp"
             android:text="Company"
@@ -119,7 +116,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/business_card_company_label"
+            android:id="@+id/business_add_card_company_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="COMPANY"
@@ -127,5 +124,14 @@
             android:textSize="16dp"
             android:textStyle="bold" />
 
+
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/saveBusinessCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="SAVE BUSINESS CARD" />
+
+</LinearLayout>

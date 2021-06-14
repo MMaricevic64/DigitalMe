@@ -22,6 +22,7 @@ import java.util.List;
 public class CardDisplay extends AppCompatActivity {
     public static final int ADD_NEW_CREDIT_CARD = 1;
     public static final int ADD_NEW_SHOOPING_CARD = 2;
+    public static final int ADD_NEW_BUSINESS_CARD = 3;
 
     private CardsDisplayViewModel cardDisplayViewModel;
     private BusinessCardDisplayViewModel businessCardDisplayViewModel;
@@ -60,9 +61,8 @@ public class CardDisplay extends AppCompatActivity {
                     startActivityForResult(intent, ADD_NEW_SHOOPING_CARD);
                 }
                 else if(ID_card_type == 3){ //Add bussiness card
-                    BusinessCard newBusinessCard = new BusinessCard("Mario Maricevic","Zagreb",
-                            "mario@gmail.com","0923821939","RITEH",ID_card_type);
-                    businessCardDisplayViewModel.insert(newBusinessCard);
+                    Intent intent = new Intent(getApplicationContext(),QRScanner.class);
+                    startActivityForResult(intent, ADD_NEW_BUSINESS_CARD);
                 }
             }
         });
@@ -182,6 +182,18 @@ public class CardDisplay extends AppCompatActivity {
             Card newShoppingCard = new Card(shopping_card_description,shopping_card_number,"", "",
                     shopping_card_owner,"","",ID_card_type);
             cardDisplayViewModel.insert(newShoppingCard);
+        }
+        else if(requestCode == ADD_NEW_BUSINESS_CARD && resultCode == RESULT_OK){
+            //Get business card info and insert in database
+            String business_card_owner = data.getStringExtra(BusinessCardAdd.BUSINESS_CARD_OWNER);
+            String business_card_location = data.getStringExtra(BusinessCardAdd.BUSINESS_CARD_LOCATION);
+            String business_card_email = data.getStringExtra(BusinessCardAdd.BUSINESS_CARD_EMAIL);
+            String business_card_phone = data.getStringExtra(BusinessCardAdd.BUSINESS_CARD_PHONE);
+            String business_card_company = data.getStringExtra(BusinessCardAdd.BUSINESS_CARD_COMPANY);
+
+            BusinessCard newBusinessCard = new BusinessCard(business_card_owner,business_card_location,
+                    business_card_email,business_card_phone,business_card_company,ID_card_type);
+            businessCardDisplayViewModel.insert(newBusinessCard);
         }
     }
 

@@ -32,6 +32,14 @@
             android:parentActivityName="com.example.digitalme.MainActivity"
             tools:ignore="ExtraText">
         </activity>
+        <activity android:name=".nav_fragments.cards.QRScanner"
+            android:parentActivityName="com.example.digitalme.MainActivity"
+            tools:ignore="ExtraText">
+        </activity>
+        <activity android:name=".nav_fragments.cards.BusinessCardAdd"
+            android:parentActivityName="com.example.digitalme.nav_fragments.cards.QRScanner"
+            tools:ignore="ExtraText">
+        </activity>
         <activity android:name=".nav_fragments.documents.DocumentFullScreen"
             tools:ignore="ExtraText">
         </activity>
