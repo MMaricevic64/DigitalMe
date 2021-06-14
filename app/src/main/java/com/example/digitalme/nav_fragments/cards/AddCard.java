@@ -26,7 +26,12 @@ public class AddCard extends AppCompatActivity {
             "com.example.digitalme.nav_fragments.notes.CREDIT_CARD_ACCOUNT_NUMBER";
     public static final String CREDIT_CARD_IBAN =
             "com.example.digitalme.nav_fragments.notes.CREDIT_CARD_IBAN";
-
+    public static final String SHOPPING_CARD_DESCRIPTION =
+            "com.example.digitalme.nav_fragments.notes.SHOPPING_CARD_DESCRIPTION";
+    public static final String SHOPPING_CARD_NUMBER =
+            "com.example.digitalme.nav_fragments.notes.SHOPPING_CARD_NUMBER";
+    public static final String SHOPPING_CARD_OWNER =
+            "com.example.digitalme.nav_fragments.notes.SHOPPING_CARD_OWNER";
     int ID_card_type;
 
     @Override
@@ -100,7 +105,41 @@ public class AddCard extends AppCompatActivity {
 
         }
         else{ //Add shooping card
+            setContentView(R.layout.activity_add_shopping_card);
 
+            //Get all elements
+            TextInputEditText shopping_card_description = findViewById(R.id.shopping_card_desc_input_field);
+            TextInputEditText shopping_card_number = findViewById(R.id.shopping_card_number_input_field);
+            TextInputEditText shopping_card_owner = findViewById(R.id.shopping_card_owner_input_field);
+            Button saveShoppingCard = findViewById(R.id.saveShoppingCard);
+
+            saveShoppingCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Create new credit card and add to database
+                    //Check if all inputs are not empty
+                    if(TextUtils.isEmpty(shopping_card_description.getText().toString())){
+                        shopping_card_description.setError("Your Card description field can't be empty!");
+                        return;
+                    }
+                    else if(TextUtils.isEmpty(shopping_card_number.getText().toString())){
+                        shopping_card_number.setError("Your Card number field can't be empty!");
+                        return;
+                    }
+                    else if(TextUtils.isEmpty(shopping_card_owner.getText().toString())){
+                        shopping_card_owner.setError("Your Card owner field can't be empty!");
+                        return;
+                    }
+                    else{
+                        Intent data = new Intent();
+                        data.putExtra(SHOPPING_CARD_DESCRIPTION, shopping_card_description.getText().toString());
+                        data.putExtra(SHOPPING_CARD_NUMBER, shopping_card_number.getText().toString());
+                        data.putExtra(SHOPPING_CARD_OWNER, shopping_card_owner.getText().toString());
+                        setResult(RESULT_OK, data);
+                        finish();
+                    }
+                }
+            });
         }
 
     }
