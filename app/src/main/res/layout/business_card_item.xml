@@ -45,11 +45,13 @@
             android:id="@+id/business_card_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:gravity="right"
             android:padding="4dp"
             android:text="Location"
+            android:autoLink="map"
+            android:clickable="true"
             android:textColor="#f93800"
+            android:textColorLink="#f93800"
             android:textSize="24dp"
             android:textStyle="bold" />
         <TextView

@@ -1,6 +1,8 @@
 package com.example.digitalme.nav_fragments.cards;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -8,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -23,6 +26,7 @@ public class CardDisplay extends AppCompatActivity {
     public static final int ADD_NEW_CREDIT_CARD = 1;
     public static final int ADD_NEW_SHOOPING_CARD = 2;
     public static final int ADD_NEW_BUSINESS_CARD = 3;
+    public static final int PERMISSIONS_REQUEST_CAMERA = 4;
 
     private CardsDisplayViewModel cardDisplayViewModel;
     private BusinessCardDisplayViewModel businessCardDisplayViewModel;
@@ -35,13 +39,12 @@ public class CardDisplay extends AppCompatActivity {
 
         //Get document type ID
         Intent intent = getIntent();
-        ID_card_type = intent.getIntExtra("ID_TYPE_CARD",0);
+        ID_card_type = intent.getIntExtra("ID_TYPE_CARD", 0);
 
         //Initiate viewModel
-        if(ID_card_type == 1 || ID_card_type == 2) {
+        if (ID_card_type == 1 || ID_card_type == 2) {
             cardDisplayViewModel = new ViewModelProvider(this, androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(CardsDisplayViewModel.class);
-        }
-        else{
+        } else {
             businessCardDisplayViewModel = new ViewModelProvider(this, androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(BusinessCardDisplayViewModel.class);
         }
 
@@ -50,26 +53,31 @@ public class CardDisplay extends AppCompatActivity {
         buttonAddDocument.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ID_card_type == 1) { //Add credit card
+                if (ID_card_type == 1) { //Add credit card
                     Intent intent = new Intent(getApplicationContext(), AddCard.class);
                     intent.putExtra("ID_TYPE_CARD", ID_card_type);
                     startActivityForResult(intent, ADD_NEW_CREDIT_CARD);
-                }
-                else if(ID_card_type == 2){ //Add shooping card
+                } else if (ID_card_type == 2) { //Add shooping card
                     Intent intent = new Intent(getApplicationContext(), AddCard.class);
                     intent.putExtra("ID_TYPE_CARD", ID_card_type);
                     startActivityForResult(intent, ADD_NEW_SHOOPING_CARD);
-                }
-                else if(ID_card_type == 3){ //Add bussiness card
-                    Intent intent = new Intent(getApplicationContext(),QRScanner.class);
-                    startActivityForResult(intent, ADD_NEW_BUSINESS_CARD);
+                } else if (ID_card_type == 3) { //Add bussiness card
+                    if (getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
+                        if (ContextCompat.checkSelfPermission(getApplication(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) { //Check for permission
+                            requestPermissions(new String[]{Manifest.permission.CAMERA}, //If there is no permission ask it
+                                    PERMISSIONS_REQUEST_CAMERA);
+                        } else {
+                            Intent intent = new Intent(getApplicationContext(), QRScanner.class);
+                            startActivityForResult(intent, ADD_NEW_BUSINESS_CARD);
+                        }
+                    }
                 }
             }
         });
 
         //Create recyclerView
         RecyclerView recyclerView = findViewById(R.id.card_gallery);
-        if(ID_card_type == 1){
+        if (ID_card_type == 1) {
             final CardDisplayAdapter adapter = new CardDisplayAdapter();
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setHasFixedSize(true);
@@ -93,11 +101,10 @@ public class CardDisplay extends AppCompatActivity {
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                     cardDisplayViewModel.delete(adapter.getCardAt(viewHolder.getAdapterPosition()));
-                    Toast.makeText(getApplicationContext(),"Card deleted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Card deleted", Toast.LENGTH_SHORT).show();
                 }
             }).attachToRecyclerView(recyclerView);
-        }
-        else if (ID_card_type == 2){
+        } else if (ID_card_type == 2) {
             final ShoppingCardDisplayAdapter adapter = new ShoppingCardDisplayAdapter();
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setHasFixedSize(true);
@@ -121,11 +128,10 @@ public class CardDisplay extends AppCompatActivity {
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                     cardDisplayViewModel.delete(adapter.getCardAt(viewHolder.getAdapterPosition()));
-                    Toast.makeText(getApplicationContext(),"Card deleted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Card deleted", Toast.LENGTH_SHORT).show();
                 }
             }).attachToRecyclerView(recyclerView);
-        }
-        else if(ID_card_type == 3){
+        } else if (ID_card_type == 3) {
             final BusinessCardDisplayAdapter adapter = new BusinessCardDisplayAdapter();
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setHasFixedSize(true);
@@ -149,13 +155,14 @@ public class CardDisplay extends AppCompatActivity {
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                     businessCardDisplayViewModel.delete(adapter.getBusinessCardAt(viewHolder.getAdapterPosition()));
-                    Toast.makeText(getApplicationContext(),"Business card deleted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Business card deleted", Toast.LENGTH_SHORT).show();
                 }
             }).attachToRecyclerView(recyclerView);
 
         }
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -169,21 +176,19 @@ public class CardDisplay extends AppCompatActivity {
             String credit_card_account_number = data.getStringExtra(AddCard.CREDIT_CARD_ACCOUNT_NUMBER);
             String credit_card_iban = data.getStringExtra(AddCard.CREDIT_CARD_IBAN);
 
-            Card newCreditCard = new Card(credit_card_description,credit_card_number,credit_card_cvv,
-                    credit_card_expiration,credit_card_owner,credit_card_account_number,credit_card_iban,ID_card_type);
+            Card newCreditCard = new Card(credit_card_description, credit_card_number, credit_card_cvv,
+                    credit_card_expiration, credit_card_owner, credit_card_account_number, credit_card_iban, ID_card_type);
             cardDisplayViewModel.insert(newCreditCard);
-        }
-        else if(requestCode == ADD_NEW_SHOOPING_CARD && resultCode == RESULT_OK){
+        } else if (requestCode == ADD_NEW_SHOOPING_CARD && resultCode == RESULT_OK) {
             //Get shooping card info and insert in database
             String shopping_card_description = data.getStringExtra(AddCard.SHOPPING_CARD_DESCRIPTION);
             String shopping_card_number = data.getStringExtra(AddCard.SHOPPING_CARD_NUMBER);
             String shopping_card_owner = data.getStringExtra(AddCard.SHOPPING_CARD_OWNER);
 
-            Card newShoppingCard = new Card(shopping_card_description,shopping_card_number,"", "",
-                    shopping_card_owner,"","",ID_card_type);
+            Card newShoppingCard = new Card(shopping_card_description, shopping_card_number, "", "",
+                    shopping_card_owner, "", "", ID_card_type);
             cardDisplayViewModel.insert(newShoppingCard);
-        }
-        else if(requestCode == ADD_NEW_BUSINESS_CARD && resultCode == RESULT_OK){
+        } else if (requestCode == ADD_NEW_BUSINESS_CARD && resultCode == RESULT_OK) {
             //Get business card info and insert in database
             String business_card_owner = data.getStringExtra(BusinessCardAdd.BUSINESS_CARD_OWNER);
             String business_card_location = data.getStringExtra(BusinessCardAdd.BUSINESS_CARD_LOCATION);
@@ -191,10 +196,22 @@ public class CardDisplay extends AppCompatActivity {
             String business_card_phone = data.getStringExtra(BusinessCardAdd.BUSINESS_CARD_PHONE);
             String business_card_company = data.getStringExtra(BusinessCardAdd.BUSINESS_CARD_COMPANY);
 
-            BusinessCard newBusinessCard = new BusinessCard(business_card_owner,business_card_location,
-                    business_card_email,business_card_phone,business_card_company,ID_card_type);
+            BusinessCard newBusinessCard = new BusinessCard(business_card_owner, business_card_location,
+                    business_card_email, business_card_phone, business_card_company, ID_card_type);
             businessCardDisplayViewModel.insert(newBusinessCard);
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSIONS_REQUEST_CAMERA) {
+            if (permissions[0].equals(Manifest.permission.CAMERA) //Permission granted for camera
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent(getApplicationContext(), QRScanner.class);
+                startActivityForResult(intent, ADD_NEW_BUSINESS_CARD);
+            } else {
+                Toast.makeText(getApplicationContext(), "You must allow permission for camera!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
